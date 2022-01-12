@@ -19,7 +19,6 @@
  */
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -43,9 +42,9 @@ module.exports = {
     // options below to some value.
     //
     development: {
-      host: "127.0.0.1", // Localhost (default: none)
-      port: 8545, // Standard Ethereum port (default: none)
-      network_id: "*", // Any network (default: none)
+     host: "127.0.0.1",     // Localhost (default: none)
+     port: 8545,            // Standard Ethereum port (default: none)
+     network_id: "*",       // Any network (default: none)
     },
     // Another network with more advanced options...
     // advanced: {
@@ -83,24 +82,34 @@ module.exports = {
   contracts_build_directory: "./src/contracts/",
   compilers: {
     solc: {
-      version: "0.8.0", // Fetch exact version from solc-bin (default: truffle's version)
-      settings: {
-        // See the solidity docs for advice about optimization and evmVersion
-        optimizer: {
-          enabled: true,
-          runs: 200,
-        },
-      },
-    },
+      version: "0.8.10",    // Fetch exact version from solc-bin (default: truffle's version)
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+       optimizer: {
+         enabled: true,
+         runs: 200
+       },
+      }
+    }
   },
 
-  // Truffle DB is currently disabled by default; to enable it, change enabled: false to enabled: true
+  // Truffle DB is currently disabled by default; to enable it, change enabled:
+  // false to enabled: true. The default storage location can also be
+  // overridden by specifying the adapter settings, as shown in the commented code below.
   //
-  // Note: if you migrated your contracts prior to enabling this field in your Truffle project and want
-  // those previously migrated contracts available in the .db directory, you will need to run the following:
+  // NOTE: It is not possible to migrate your contracts to truffle DB and you should
+  // make a backup of your artifacts to a safe location before enabling this feature.
+  //
+  // After you backed up your artifacts you can utilize db by running migrate as follows: 
   // $ truffle migrate --reset --compile-all
-
-  db: {
-    enabled: false,
-  },
+  //
+  // db: {
+    // enabled: false,
+    // host: "127.0.0.1",
+    // adapter: {
+    //   name: "sqlite",
+    //   settings: {
+    //     directory: ".db"
+    //   }
+    // }
+  // }
 };
