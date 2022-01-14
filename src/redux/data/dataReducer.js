@@ -1,7 +1,7 @@
 const initialState = {
     loading: false,
-    allLips: [],
-    allOwnerLips: [],
+    allPickles: [],
+    allOwnerPickles: [],
     error: false,
     errorMsg: "",
   };
@@ -17,8 +17,8 @@ const initialState = {
         return {
           ...initialState,
           loading: false,
-          allLips: action.payload.allLips,
-          allOwnerLips: action.payload.allOwnerLips,
+          allPickles: action.payload.allPickles,
+          allOwnerPickles: action.payload.allOwnerPickles,
         };
       case "CHECK_DATA_FAILED":
         return {

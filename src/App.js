@@ -2,9 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from "react-redux";
 
-
 function App() {
-  const useDispatch = useDispatch();
+  const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
 
   console.table(blockchain);
@@ -18,7 +17,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://pickle.family"
+          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
