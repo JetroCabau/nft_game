@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 function App() {
