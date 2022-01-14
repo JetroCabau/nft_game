@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import {useDispatch, useSelector} from "react-redux";
+
 
 function App() {
+  const useDispatch = useDispatch();
+  const blockchain = useSelector((state) => state.blockchain);
+
+  console.table(blockchain);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -11,7 +18,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://pickle.family"
           target="_blank"
           rel="noopener noreferrer"
         >
