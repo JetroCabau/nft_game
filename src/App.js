@@ -1,36 +1,66 @@
 import React, { useEffect } from "react";
-import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
+import { fetchData } from "./redux/data/dataActions";
+import * as s from "./styles/globalStyles";
 
 function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
 
-  console.table(blockchain);
+  console.log(data);
+
+  const mintNFT = (_account, _name) => {
+    blockchain.PickleCoin.methods
+    .createRandomPickle(_name)
+    .send({ from: _account, value: 1000000000000000000 })
+    .once("error", (err) => {
+      console.log(err);
+    }).then((receipt) => {
+      console.log(receipt);
+      dispatch(fetchData());
+    })
+  };
 
   useEffect(() => {
-    dispatch(connect());
-  }, [dispatch]);
+    if (blockchain.account != "") {
+      dispatch(fetchData());
+    }
+  }, [blockchain.account]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <s.Screen>
+      {blockchain.account === "" || blockchain.PickleCoin === null ? (
+        <s.Container flex={1} ai={"center"} jc={"center"}>
+          <s.TextTitle>Connect to the Pickle Farm</s.TextTitle>
+          <s.SpacerSmall />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(connect());
+            }}
+         >
+            Connect
+            </button>
+        </s.Container>
+      ) : (
+        <s.Container ai={"center"} style={{ padding: "24px" }}>
+          <s.TextTitle>Welcome to the Farm</s.TextTitle>
+          <s.SpacerSmall />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              mintNFT(blockchain.account, "Jetro");
+            }}
+         >
+            CREATE NFT PICKLE
+            </button>
+            <s.SpacerSmall />
+        </s.Container>
+      )}
+    </s.Screen>
   );
 }
 

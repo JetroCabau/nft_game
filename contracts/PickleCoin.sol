@@ -61,4 +61,16 @@ contract PickleCoin is ERC721, Ownable {
     function getPickle() public view returns(Pickle[] memory){
         return pickle;
     }
+
+    function getOwnerPickle(address _owner) public view returns (Pickle[] memory) {
+        Pickle[] memory result = new Pickle[](balanceOf(_owner));
+        uint256 counter = 0;
+        for(uint256 i = 0; i < pickle.length; i++) {
+            if(ownerOf(i) == _owner) {
+                result[counter] = pickle[i];
+                counter++;
+            }
+        }
+        return result;
+    }
 }
