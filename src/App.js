@@ -53,7 +53,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (blockchain.account != "" && blockchain.PickleCoin != null) {
+    if (blockchain.account !== "" && blockchain.PickleCoin != null) {
       dispatch(fetchData(blockchain.account));
     }
   }, [blockchain.PickleCoin]);
@@ -73,7 +73,7 @@ function App() {
             CONNECT
           </button>
           <s.SpacerXSmall />
-          {blockchain.errorMsg != "" ? (
+          {blockchain.errorMsg !== "" ? (
             <s.TextDescription>{blockchain.errorMsg}</s.TextDescription>
           ) : null}
         </s.Container>
@@ -88,7 +88,7 @@ function App() {
               mintNFT(blockchain.account, "Unknown");
             }}
           >
-            CREATE NFT Pickle
+            CREATE NFT PICKLE
           </button>
           <s.SpacerMedium />
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>

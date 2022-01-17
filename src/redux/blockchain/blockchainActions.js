@@ -40,13 +40,11 @@ export const connect = () => {
         const accounts = await window.ethereum.request({
           method: "eth_accounts",
         });
-        console.log("Accounnt ", accounts[0]);
         const networkId = await window.ethereum.request({
           method: "net_version",
         });
-        console.log("networkId ", networkId[0]);
         console.log(networkId);
-        if (networkId == 137) {
+        if (networkId === 137) {
           const PickleCoin = new web3.eth.Contract(
             PickleCoin.abi,
             "0x247700BBab4dC984547444eCaa95f4E3Ed5dEC74"
