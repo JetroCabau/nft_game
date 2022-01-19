@@ -1,7 +1,7 @@
 const initialState = {
   loading: false,
-  allPickles: [],
-  allOwnerPickles: [],
+  allPickle: [],
+  allOwnerPickle: [],
   error: false,
   errorMsg: "",
 };
@@ -17,8 +17,8 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...initialState,
         loading: false,
-        allPickles: action.payload.allPickles,
-        allOwnerPickles: action.payload.allOwnerPickles,
+        allPickle: action.payload.allPickle,
+        allOwnerPickle: action.payload.allOwnerPickle,
       };
     case "CHECK_DATA_FAILED":
       return {

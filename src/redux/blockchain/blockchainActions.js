@@ -47,7 +47,7 @@ export const connect = () => {
         if (networkId === 137) {
           const PickleCoin = new web3.eth.Contract(
             PickleCoin.abi,
-            "0x247700BBab4dC984547444eCaa95f4E3Ed5dEC74"
+            "0xefd907E9f24A6c03eBF7e193992A81066620B31E"
           );
           dispatch(
             connectSuccess({

@@ -25,19 +25,19 @@ export const fetchData = (account) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
-      let allPickles = await store
+      let allPickle = await store
         .getState()
         .blockchain.PickleCoin.methods.getPickle()
         .call();
-      let allOwnerPickles = await store
+      let allOwnerPickle = await store
         .getState()
         .blockchain.PickleCoin.methods.getOwnerPickle(account)
         .call();
 
       dispatch(
         fetchDataSuccess({
-          allPickles,
-          allOwnerPickles,
+          allPickle,
+          allOwnerPickle,
         })
       );
     } catch (err) {
